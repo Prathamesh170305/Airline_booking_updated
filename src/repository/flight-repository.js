@@ -17,6 +17,7 @@ class FlightRepository {
         if (data.departureAirportId) {
             filter.departureAirportId = data.departureAirportId; // Fixed typo
         }
+        //inbetween prices
         if (data.minPrice && data.maxPrice) {
             Object.assign(filter, {
                 [Op.and]: [
