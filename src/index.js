@@ -1,10 +1,12 @@
+require('dotenv').config();
 const express= require("express");
 const{PORT}=require('./config/serverConfig');
 const{Airport,City}=require('./models/index');
 const bodyPraser=require('body-parser');
 const CityRepository=require('./repository/city-repository');
 const ApiRoutes=require('./routes/index');
-
+const city = require("./models/city");
+const db= require("./models/index");
 
 const setupAndStartServer=async()=>{
     //create the express object 
@@ -18,9 +20,11 @@ const setupAndStartServer=async()=>{
     //start the server 
     app.listen(PORT,async()=>{
         console.log(`Server started on port ${PORT}`);
+       // console.log("jai ram ji ki");
         
-        const airports=await Airport.findAll();
-        console.log(airports);
+        // if(process.env.SYNC_DB){
+        //     db.sequelize.sync({alter:true});
+        // }
         
     });
 }
